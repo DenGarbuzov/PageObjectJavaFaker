@@ -12,7 +12,7 @@ public class Data {
    address = "Monster town",
    bDay = "07 May,1988",
    url = "https://demoqa.com/automation-practice-form",
-   filePath = "src/storage/photo.jpg",
+   filePath = "src/test/java/qa/dgg/storage/photo.jpg",
    month = "May",
    year = "1988",
    outputForm = ".table-responsive tbody tr";
