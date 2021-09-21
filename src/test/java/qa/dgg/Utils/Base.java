@@ -3,12 +3,10 @@ package qa.dgg.Utils;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 
-import java.io.File;
-
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
-public class Base extends Data{
+public class Base extends Variables {
     @BeforeAll
     static void beforeAll() {
         Configuration.startMaximized = true;
@@ -28,8 +26,8 @@ public class Base extends Data{
         maleGender.click();
     }
 
-    public void setPicture(String path){
-        upload.uploadFile(new File(path));
+    public void setPicture(String name){
+        upload.uploadFromClasspath(name);
     }
     public void setFirstHobby() {
         $("[for=hobbies-checkbox-1]").click();

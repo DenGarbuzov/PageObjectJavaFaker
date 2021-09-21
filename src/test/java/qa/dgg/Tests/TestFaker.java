@@ -4,7 +4,7 @@ import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 import qa.dgg.Components.DatePicker;
 import qa.dgg.Utils.Base;
-import qa.dgg.Utils.Data;
+import qa.dgg.Utils.Variables;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
@@ -25,12 +25,12 @@ public class TestFaker extends Base{
 
         open(url);
         setFullName(firstName, lastName);
-        Data.emailField.setValue(userEmail);
-        Data.telNumber.setValue(phoneNumber);
+        Variables.emailField.setValue(userEmail);
+        Variables.telNumber.setValue(phoneNumber);
         DatePicker.fillDataPicker(day, month, year);
         setMathSubject();
         setMaleGender();
-        setPicture(filePath);
+        setPicture("photo.jpg");
         setFirstHobby();
         addressField.setValue(address);
         setNCR();

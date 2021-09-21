@@ -3,7 +3,7 @@ package qa.dgg.Utils;
 import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$;
 
-public class Data {
+public class Variables {
 
    public static String firstName = "Mike",
    lastName = "Wasovskiy",
@@ -12,7 +12,6 @@ public class Data {
    address = "Monster town",
    bDay = "07 May,1988",
    url = "https://demoqa.com/automation-practice-form",
-   filePath = "src/test/java/qa/dgg/Storage/photo.jpg",
    month = "May",
    year = "1988",
    outputForm = ".table-responsive tbody tr";

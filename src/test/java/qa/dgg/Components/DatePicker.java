@@ -1,10 +1,10 @@
 package qa.dgg.Components;
 
-import qa.dgg.Utils.Data;
+import qa.dgg.Utils.Variables;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class DatePicker extends Data {
+public class DatePicker extends Variables {
 
     public static void fillDataPicker(int day, String month, String year) {
         $("#dateOfBirthInput").click();
