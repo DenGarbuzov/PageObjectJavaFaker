@@ -1,14 +1,15 @@
 package qa.dgg.Tests;
 
 import com.github.javafaker.Faker;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.Test;
 import qa.dgg.Components.DatePicker;
 import qa.dgg.Utils.Base;
 import qa.dgg.Utils.Variables;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
+import static io.qameta.allure.Allure.step;
 
 public class TestFaker extends Base{
 
@@ -23,20 +24,22 @@ public class TestFaker extends Base{
         phoneNumber = faker.phoneNumber().subscriberNumber(10);
         address = faker.address().fullAddress();
 
-        open(url);
-        setFullName(firstName, lastName);
-        Variables.emailField.setValue(userEmail);
-        Variables.telNumber.setValue(phoneNumber);
-        DatePicker.fillDataPicker(day, month, year);
-        setMathSubject();
-        setMaleGender();
-        setPicture("photo.jpg");
-        setFirstHobby();
-        addressField.setValue(address);
-        setNCR();
-        setDelhiCity();
-        submit();
-        // checking results
+        step("Открываем сайт с формой", () -> open(url));
+        takeScreenshot();
+        step("Вводим имя и фамилию", () -> setFullName(firstName, lastName));
+        step("Вводим email", () -> Variables.emailField.setValue(userEmail));
+        step("Вводим телефонный номер", () -> Variables.telNumber.setValue(phoneNumber));
+        step("Вводим дату рождения", () -> DatePicker.fillDataPicker(day, month, year));
+        step("Вводим любимый предмет", () -> setMathSubject());
+        step("Вводим пол", () ->setMaleGender());
+        step("Прикрепляем картинку", () ->setPicture("photo.jpg"));
+        step("Вводим хобби", () -> setFirstHobby());
+        step("Вводим адрес", () -> addressField.setValue(address));
+        step("Вводим адрес страну", () -> setNCR());
+        step("Вводим адрес город", () -> setDelhiCity());
+        step("Подтверждаем заполненную форму", () -> submit());
+        takeScreenshot();
+        step("Проверка введенных данных заполненной форме", () -> {
         $(outputForm,0).shouldHave(text(firstName + " " + lastName), text("Student Name"));
         $(outputForm,1).shouldHave(text(userEmail), text("Student Email"));
         $(outputForm,2).shouldHave(text("Male"), text("Gender"));
@@ -47,5 +50,5 @@ public class TestFaker extends Base{
         $(outputForm,7).shouldHave(text("photo.jpg"), text("Picture"));
         $(outputForm,8).shouldHave(text(address), text("Address"));
         $(outputForm,9).shouldHave(text("NCR Delhi "), text("State and City"));
-    }
-}
+    });
+}}
